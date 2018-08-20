@@ -51,6 +51,12 @@ def main():
     # print()
     # print("-------------------")
 
+    # export result to a csv file
+    filename = "products.csv"
+    f = open(filename, "w")
+    header = "Brand, Description, Shipping Cost\n"
+    f.write(header)
+
     # the loop that prints the info we want
     for container in containers:
         brand = container.div.div.a.img["title"]
@@ -62,6 +68,13 @@ def main():
         print("Description: " + product_name)
         print("Shipping cost: " + shipping)
         print()
+
+        # Important: replace the comas in the description string to avoid adding extra columns
+        line = brand + "," + product_name.replace(",", "|") + "," + shipping + "\n"
+        f.write(line)
+
+    f.close()
+
 
 
 main()
