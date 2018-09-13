@@ -6,6 +6,30 @@ import jsbeautifier
 # Title: Intro to Web Scraping with Python and Beautiful Soup
 # @author Data Science Dojo and Ivan Ko
 
+# ----code example 1----
+    # look at the h1 header of the page
+    # print("h1 is: ")
+    # print(page_soup.h1)
+    # example code: look at the p of the page
+    # print("p is: ")
+    # print(page_soup.p)
+    # look at the span of the p of the page
+    # print(page_soup.body.span)
+
+# ----code example 2----
+    # how many objects
+    # print(len(containers))
+    # print(containers[0])
+
+# ----code example 3----
+    # testing jsbeautifer
+    # print(jsbeautifier.beautify(str(container.div)))
+    # print()
+    # print("-------------------")
+    # to get to the a inside a div of a div
+    # print(container.div.div.a)
+    # print()
+    # print("-------------------")    
 
 def main():
     # looking into the desktop GPU page from newegg
@@ -19,37 +43,19 @@ def main():
     # use BeautifulSoup to parse page_html and store as json object (probably)
     page_soup = soup(page_html, "html.parser")
 
-    # ----code example----
-    # look at the h1 header of the page
-    # print("h1 is: ")
-    # print(page_soup.h1)
-    # example code: look at the p of the page
-    # print("p is: ")
-    # print(page_soup.p)
-    # look at the span of the p of the page
-    # print(page_soup.body.span)
+    # ----code example 1----
+    # See top
 
     # grabs each product
     containers = page_soup.findAll("div", {"class": "item-container"})
     print()
     print("-------------------")
 
-    # ----code example----
-    # how many objects
-    # print(len(containers))
-    # print(containers[0])
+    # ----code example 2----
 
     container = containers[0]
 
-    # ----code example----
-    # testing jsbeautifer
-    # print(jsbeautifier.beautify(str(container.div)))
-    # print()
-    # print("-------------------")
-    # to get to the a inside a div of a div
-    # print(container.div.div.a)
-    # print()
-    # print("-------------------")
+    # ----code example 3----
 
     # export result to a csv file
     filename = "products.csv"
